@@ -1,10 +1,6 @@
 package vn.khoait.jobhunter.config;
 
 import java.io.IOException;
-import java.net.URI;
-
-import javax.naming.AuthenticationException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
 import org.springframework.security.web.AuthenticationEntryPoint;
