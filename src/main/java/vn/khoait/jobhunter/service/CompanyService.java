@@ -3,9 +3,15 @@ package vn.khoait.jobhunter.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vn.khoait.jobhunter.domain.Company;
+import vn.khoait.jobhunter.domain.User;
+import vn.khoait.jobhunter.domain.dto.Meta;
+import vn.khoait.jobhunter.domain.dto.ResultPaginationDTO;
 import vn.khoait.jobhunter.repository.CompanyRepository;
 
 @Service
@@ -19,8 +25,17 @@ public class CompanyService {
         return this.companyRepository.save(newCompany);
     }
 
-    public List<Company> handleGetAllCompanies() {
-        return this.companyRepository.findAll();
+    public ResultPaginationDTO handleGetAllCompanies(Specification<Company> spec, Pageable pageable) {
+        Page<Company> pageCompany = this.companyRepository.findAll(spec, pageable);
+        ResultPaginationDTO rs = new ResultPaginationDTO();
+        Meta mt = new Meta();
+        mt.setPage(pageCompany.getNumber() + 1);
+        mt.setPageSize(pageCompany.getSize());
+        mt.setPages(pageCompany.getTotalPages());
+        mt.setTotal(pageCompany.getTotalElements());
+        rs.setMeta(mt);
+        rs.setResult(pageCompany.getContent());
+        return rs;
     }
 
     public Company handleUpdateCompany(Company company) {
