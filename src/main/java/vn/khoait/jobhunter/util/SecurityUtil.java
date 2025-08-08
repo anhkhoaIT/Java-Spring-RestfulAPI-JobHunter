@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 
 import com.nimbusds.jose.util.Base64;
 
-import vn.khoait.jobhunter.domain.dto.ResLoginDTO;
+import vn.khoait.jobhunter.domain.response.ResLoginDTO;
 
 
 

@@ -17,8 +17,7 @@ import com.turkraft.springfilter.boot.Filter;
 
 import jakarta.validation.Valid;
 import vn.khoait.jobhunter.domain.Company;
-
-import vn.khoait.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.khoait.jobhunter.domain.response.ResultPaginationDTO;
 import vn.khoait.jobhunter.service.CompanyService;
 
 @RestController
