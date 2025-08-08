@@ -1,4 +1,4 @@
-package vn.khoait.jobhunter.service;
+package vn.khoait.jobhunter.config;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+
+import vn.khoait.jobhunter.service.UserService;
 @Component("userDetailsService")
 public class UserDetailsCustom implements UserDetailsService{
     private final UserService userService;
