@@ -1,15 +1,15 @@
 package vn.khoait.jobhunter.repository;
 
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
-import vn.khoait.jobhunter.domain.Company;
-import vn.khoait.jobhunter.domain.User;
 
-
+import vn.khoait.jobhunter.domain.Skill;
 @Repository
-public interface CompanyRepository extends JpaRepository<Company, Long>, JpaSpecificationExecutor<Company>{
-    
-} 
+public interface SkillRepository extends JpaRepository<Skill, Long>, JpaSpecificationExecutor<Skill>{
+    Skill findByName(String name);
+    List<Skill> findByIdIn(List<Long> ids);
+}

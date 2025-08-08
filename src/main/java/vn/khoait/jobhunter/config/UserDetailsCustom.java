@@ -1,6 +1,5 @@
 package vn.khoait.jobhunter.config;
 
-import java.util.Collection;
 import java.util.Collections;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
