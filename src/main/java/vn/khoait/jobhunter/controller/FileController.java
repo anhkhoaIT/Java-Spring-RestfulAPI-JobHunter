@@ -1,0 +1,54 @@
+package vn.khoait.jobhunter.controller;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import vn.khoait.jobhunter.domain.response.file.ResUploadFileDTO;
+import vn.khoait.jobhunter.service.FileService;
+import vn.khoait.jobhunter.util.StorageException;
+
+
+@RestController
+@RequestMapping("/api/v1")
+public class FileController {
+    @Value("${khoait.upload-file.base-uri}")
+    private String baseURI;
+    private final FileService fileService;
+    public FileController(FileService fileService) {
+        this.fileService = fileService;
+    }
+    @PostMapping("/files")
+    public ResponseEntity<ResUploadFileDTO> upload(
+        @RequestParam(name = "file", required = false) MultipartFile file,
+        @RequestParam("folder") String folder
+    ) throws URISyntaxException, IOException, StorageException {
+        //skip validate
+        if(file == null || file.isEmpty()) {
+            throw new StorageException(" File is empty. Please upload file");
+        }
+        String fileName = file.getOriginalFilename();
+        List<String> allowedExtensions = Arrays.asList("pdf", "jpg", "jpeg", "png", "doc", "docx");
+        boolean isValid = allowedExtensions.stream().anyMatch(item -> fileName.toLowerCase().endsWith(item));
+        if(!isValid) {
+            throw new StorageException(" Invalid file extension. only allows " + allowedExtensions.toString());
+        }
+        //create directory if not exist
+        this.fileService.createDirectory(baseURI + folder);
+        //store file
+        String uploadFile = this.fileService.store(file, folder);
+        ResUploadFileDTO res = new ResUploadFileDTO(uploadFile, Instant.now());
+        return ResponseEntity.ok().body(res);
+    }
+}
