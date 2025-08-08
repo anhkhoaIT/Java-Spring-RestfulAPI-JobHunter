@@ -1,6 +1,5 @@
 package vn.khoait.jobhunter.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -9,8 +8,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vn.khoait.jobhunter.domain.Company;
-import vn.khoait.jobhunter.domain.User;
-import vn.khoait.jobhunter.domain.dto.Meta;
 import vn.khoait.jobhunter.domain.dto.ResultPaginationDTO;
 import vn.khoait.jobhunter.repository.CompanyRepository;
 
@@ -28,7 +25,7 @@ public class CompanyService {
     public ResultPaginationDTO handleGetAllCompanies(Specification<Company> spec, Pageable pageable) {
         Page<Company> pageCompany = this.companyRepository.findAll(spec, pageable);
         ResultPaginationDTO rs = new ResultPaginationDTO();
-        Meta mt = new Meta();
+        ResultPaginationDTO.Meta mt = new ResultPaginationDTO.Meta();
         mt.setPage(pageCompany.getNumber() + 1);
         mt.setPageSize(pageCompany.getSize());
         mt.setPages(pageCompany.getTotalPages());

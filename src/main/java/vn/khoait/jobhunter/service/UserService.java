@@ -2,7 +2,6 @@ package vn.khoait.jobhunter.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -11,7 +10,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import vn.khoait.jobhunter.domain.User;
-import vn.khoait.jobhunter.domain.dto.Meta;
 import vn.khoait.jobhunter.domain.dto.ResCreateUserDTO;
 import vn.khoait.jobhunter.domain.dto.ResUpdateUserDTO;
 import vn.khoait.jobhunter.domain.dto.ResUserDTO;
@@ -88,7 +86,7 @@ public class UserService {
     public ResultPaginationDTO fetchAllUsers(Specification<User> spec, Pageable pageable) {
         Page<User> pageUser = this.userRepository.findAll(spec, pageable);
         ResultPaginationDTO rs = new ResultPaginationDTO();
-        Meta mt = new Meta();
+        ResultPaginationDTO.Meta mt = new ResultPaginationDTO.Meta();
         mt.setPage(pageable.getPageNumber() + 1);
         mt.setPageSize(pageable.getPageSize());
         mt.setPages(pageUser.getTotalPages());
