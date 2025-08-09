@@ -1,4 +1,4 @@
-package vn.khoait.jobhunter.domain.response;
+package vn.khoait.jobhunter.domain.response.user;
 
 import java.time.Instant;
 

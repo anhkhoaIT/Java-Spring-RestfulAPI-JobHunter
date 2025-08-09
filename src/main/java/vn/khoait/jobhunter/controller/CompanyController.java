@@ -1,4 +1,6 @@
 package vn.khoait.jobhunter.controller;
+import java.util.Optional;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
@@ -48,5 +50,11 @@ public class CompanyController {
     public ResponseEntity<Void> deleteCompany(@PathVariable("id") Long companyId) {
         this.companyService.handleDeleteCompany(companyId);
         return ResponseEntity.ok(null);
+    }
+
+    @GetMapping("/companies/{id}")
+    public ResponseEntity<Company> fetchCompanyById(@PathVariable("id") Long id) {
+        Optional<Company> cOptional = this.companyService.findById(id);
+        return ResponseEntity.ok().body(cOptional.get());
     }
 }

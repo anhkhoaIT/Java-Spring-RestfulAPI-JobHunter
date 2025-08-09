@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.turkraft.springfilter.boot.Filter;
 import jakarta.validation.Valid;
 import vn.khoait.jobhunter.domain.User;
-import vn.khoait.jobhunter.domain.response.ResCreateUserDTO;
-import vn.khoait.jobhunter.domain.response.ResUpdateUserDTO;
-import vn.khoait.jobhunter.domain.response.ResUserDTO;
 import vn.khoait.jobhunter.domain.response.ResultPaginationDTO;
+import vn.khoait.jobhunter.domain.response.user.ResCreateUserDTO;
+import vn.khoait.jobhunter.domain.response.user.ResUpdateUserDTO;
+import vn.khoait.jobhunter.domain.response.user.ResUserDTO;
 import vn.khoait.jobhunter.service.UserService;
 
 @RestController

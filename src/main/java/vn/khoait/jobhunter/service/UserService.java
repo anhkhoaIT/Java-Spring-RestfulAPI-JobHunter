@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 
 import vn.khoait.jobhunter.domain.Company;
 import vn.khoait.jobhunter.domain.User;
-import vn.khoait.jobhunter.domain.response.ResCreateUserDTO;
-import vn.khoait.jobhunter.domain.response.ResUpdateUserDTO;
-import vn.khoait.jobhunter.domain.response.ResUserDTO;
 import vn.khoait.jobhunter.domain.response.ResultPaginationDTO;
+import vn.khoait.jobhunter.domain.response.user.ResCreateUserDTO;
+import vn.khoait.jobhunter.domain.response.user.ResUpdateUserDTO;
+import vn.khoait.jobhunter.domain.response.user.ResUserDTO;
 import vn.khoait.jobhunter.repository.UserRepository;
 
 @Service

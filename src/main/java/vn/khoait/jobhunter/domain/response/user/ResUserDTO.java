@@ -1,13 +1,16 @@
-package vn.khoait.jobhunter.domain.response;
+package vn.khoait.jobhunter.domain.response.user;
 
 import java.time.Instant;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import vn.khoait.jobhunter.domain.Company;
 import vn.khoait.jobhunter.util.constant.GenderEnum;
 @Getter @Setter
-public class ResCreateUserDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ResUserDTO {
     private Long id;
     private String name;
     private String email;
@@ -15,11 +18,13 @@ public class ResCreateUserDTO {
     private GenderEnum gender;
     private String address;
     private Instant createdAt;
+    private Instant updatedAt;
     private CompanyUser company;
     @Getter @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class CompanyUser {
         private long id;
         private String name;
     }
-   
 }
