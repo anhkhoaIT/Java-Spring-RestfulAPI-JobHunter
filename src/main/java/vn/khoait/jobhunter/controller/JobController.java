@@ -20,7 +20,6 @@ import com.turkraft.springfilter.boot.Filter;
 
 import jakarta.validation.Valid;
 import vn.khoait.jobhunter.domain.Job;
-import vn.khoait.jobhunter.domain.Skill;
 import vn.khoait.jobhunter.domain.response.ResultPaginationDTO;
 import vn.khoait.jobhunter.domain.response.job.ResCreateJobDTO;
 import vn.khoait.jobhunter.domain.response.job.ResUpdateJobDTO;
