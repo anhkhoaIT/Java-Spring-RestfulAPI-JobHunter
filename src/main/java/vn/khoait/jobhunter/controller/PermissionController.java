@@ -45,7 +45,7 @@ public class PermissionController {
         }
         //check exist permission
         if(this.permissionService.isPermissionExist(p)) {
-            throw new BadCredentialsException("Permission đã tồn tại");
+                throw new BadCredentialsException("Permission đã tồn tại");
         }
         return ResponseEntity.ok().body(this.permissionService.update(p));
     }

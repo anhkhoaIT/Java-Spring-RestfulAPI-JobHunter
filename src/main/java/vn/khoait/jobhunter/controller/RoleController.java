@@ -49,9 +49,9 @@ public class RoleController {
             throw new BadCredentialsException("Role với id" + r.getId() + " không tồn tại");  
         }
         //check name
-        if(this.roleService.isNameExist(r.getName())) {
-            throw new BadCredentialsException("Role với name = " + r.getName() + " đã tồn tại");
-        }
+        // if(this.roleService.isNameExist(r.getName())) {
+        //     throw new BadCredentialsException("Role với name = " + r.getName() + " đã tồn tại");
+        // }
         return ResponseEntity.ok().body(this.roleService.update(r));
     }
 
@@ -69,5 +69,14 @@ public class RoleController {
     public ResponseEntity<ResultPaginationDTO> getAllRoles(@Filter Specification<Role> spec, Pageable pageable) throws BadCredentialsException{
         
         return ResponseEntity.ok().body(this.roleService.handleGetAllRoles(spec, pageable));
+    }
+
+    @GetMapping("roles/{id}") 
+    public ResponseEntity<Role> getById(@PathVariable("id") long id) throws BadCredentialsException {
+        Role role = this.roleService.fetchById(id);
+        if(role == null) {
+            throw new BadCredentialsException("Role với id = " + id + " không tồn tại");
+        }
+        return ResponseEntity.ok().body(role);
     }
 }
