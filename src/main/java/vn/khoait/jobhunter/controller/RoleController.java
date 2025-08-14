@@ -48,10 +48,7 @@ public class RoleController {
         if(this.roleService.fetchById(r.getId()) == null) {
             throw new BadCredentialsException("Role với id" + r.getId() + " không tồn tại");  
         }
-        //check name
-        // if(this.roleService.isNameExist(r.getName())) {
-        //     throw new BadCredentialsException("Role với name = " + r.getName() + " đã tồn tại");
-        // }
+        
         return ResponseEntity.ok().body(this.roleService.update(r));
     }
 

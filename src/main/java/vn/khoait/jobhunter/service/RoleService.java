@@ -61,6 +61,7 @@ public class RoleService {
             roleDB.setName(r.getName());
             roleDB.setDescription(r.getDescription());
             roleDB.setActive(r.isActive());
+            roleDB.setPermissions(r.getPermissions());
 
             //update
             roleDB = this.roleRepository.save(roleDB);
