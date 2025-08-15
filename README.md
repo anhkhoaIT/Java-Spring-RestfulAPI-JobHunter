@@ -1,7 +1,7 @@
-# JobHunter - Backend
+# JobHunter API - Backend
 
 JobHunter là nền tảng tuyển dụng được xây dựng với **Java Spring Boot**, tập trung vào hiệu suất, bảo mật và khả năng mở rộng.  
-Dự án triển khai hệ thống xác thực, phân quyền, quản lý API, gửi email và thao tác cơ sở dữ liệu.
+Dự án triển khai các API về hệ thống xác thực, phân quyền, quản lý API, gửi email và thao tác cơ sở dữ liệu.
 
 ## 🚀 Tech Stack
 
@@ -12,9 +12,6 @@ Dự án triển khai hệ thống xác thực, phân quyền, quản lý API, g
 - Spring Security + JWT – Xác thực (Authentication) và phân quyền người dùng (Authorization) với JSON Web Token.
 - Spring JPA – Xử lý và thao tác dữ liệu với cơ sở dữ liệu quan hệ.
 
-**Frontend:**
-
-- React + Vite (TypeScript) – Được cung cấp sẵn trong khoá học.
 
 **Build Tool:**
 
